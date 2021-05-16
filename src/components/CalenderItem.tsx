@@ -1,12 +1,12 @@
 import React from 'react';
 
 type Props = {
-  date: string;
+  date: number;
 };
 
 const CalendarItem: React.FC<Props> = props => {
   return (
-    <div>
+    <div className="column">
       <p>{props.date}</p>
     </div>
   );
