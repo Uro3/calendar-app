@@ -3,7 +3,7 @@ import style from './Calender.module.scss';
 
 const CalendarElemntSlot: React.FC = props => {
   return (
-    <div className={`${style.element} column`}>
+    <div className={`column ${style.element}`}>
       {props.children}
     </div>
   );

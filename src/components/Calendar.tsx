@@ -2,6 +2,7 @@ import React from 'react';
 import { CalendarState } from '../types';
 import { useAppSelector } from '../hooks';
 import { DISPLAY_DAYS } from '../constants';
+import style from './Calender.module.scss';
 import CalenderElemntSlot from './CalenderElementSlot';
 import CalenderHeader from './CalenderHeader';
 import CalenderContent from './CalenderContent';
@@ -22,7 +23,7 @@ const Calendar: React.FC = () => {
   );
 
   return (
-    <div className="columns is-multiline is-gapless is-mobile">
+    <div className={`columns is-multiline is-gapless is-mobile ${style.container}`}>
       {headers}
       {contents}
     </div>

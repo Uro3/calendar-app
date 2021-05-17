@@ -1,5 +1,6 @@
 import React from 'react';
 import { CalendarContent as CalendarContentType } from '../types';
+import style from './Calender.module.scss';
 
 type Props = {
   content: CalendarContentType;
@@ -13,9 +14,12 @@ const CalendarContent: React.FC<Props> = props => {
 
   return (
     <>
-      <span className={dateTextColorClass}>
-        {displayDate}
-      </span>
+      <div className={style.caption}>
+        <span className={dateTextColorClass}>
+          {displayDate}
+        </span>
+      </div>
+      <div className={style.content}></div>
     </>
   );
 }
