@@ -14,17 +14,10 @@ const Calendar: React.FC = () => {
       <CalenderHeader value={day} />
     </CalenderElemntSlot>
   );
-
-  const calendarDates = [
-    ...calendar.extraPreviousDates,
-    ...calendar.dates,
-    ...calendar.extraNextDates
-  ];
-  console.log(calendarDates);
   
-  const contents = calendarDates.map(date =>
+  const contents = calendar.contents.map(content =>
     <CalenderElemntSlot>
-      <CalenderContent date={date} />
+      <CalenderContent content={content} isCurrentMonth={content.month === calendar.month} />
     </CalenderElemntSlot>
   );
 

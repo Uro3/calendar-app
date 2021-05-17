@@ -1,4 +1,4 @@
-import { CalendarState } from '../types';
+import { CalendarContent, CalendarState } from '../types';
 
 export const createCalenderState = (date: Date): CalendarState => {
   const year = date.getFullYear();
@@ -7,18 +7,26 @@ export const createCalenderState = (date: Date): CalendarState => {
   const extraPreviousDates = getCalendarPreviousMonthDates(year, month);
   const extraNextDates = getCalendarNextMonthDates(year, month);
 
+  const contents = [
+    ...createCalendarContent(extraPreviousDates, month - 1),
+    ...createCalendarContent(dates, month),
+    ...createCalendarContent(extraNextDates, month + 1)
+  ];
+
   return {
     year,
     month,
-    dates,
-    extraPreviousDates,
-    extraNextDates
+    contents
   };
 };
 
-// [start, start+1, ..., end-1, end] の配列を返す関数
-const getNumberRangeArray = (start: number, end: number): number[] => {
-  return [...Array(end - start + 1)].map((_, index) => index + start);
+const createCalendarContent = (dates: number[], month: number): CalendarContent[] => {
+  return dates.map(date => {
+    return {
+      date,
+      month
+    };
+  });
 };
 
 // 引数で与えられた年月に含まれる日付の配列を返す関数
@@ -38,4 +46,9 @@ const getCalendarPreviousMonthDates = (year: number, month: number): number[] =>
 const getCalendarNextMonthDates = (year: number, month: number): number[] => {
   const dayOfLastDate = new Date(year, month, 0).getDay();
   return getNumberRangeArray(1, 6 - dayOfLastDate);
+};
+
+// [start, start+1, ..., end-1, end] の配列を返す関数
+const getNumberRangeArray = (start: number, end: number): number[] => {
+  return [...Array(end - start + 1)].map((_, index) => index + start);
 };

@@ -7,7 +7,9 @@ type Props = {
 const CalendarHeader: React.FC<Props> = props => {
   return (
     <>
-      {props.value}
+      <span className='has-text-grey'>
+        {props.value}
+      </span>
     </>
   );
 }
