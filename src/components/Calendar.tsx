@@ -15,14 +15,14 @@ const Calendar: React.FC = () => {
     </CalenderElemntSlot>
   );
 
-  const calendarDays = [
-    ...calendar.extraPreviousDays,
-    ...calendar.days,
-    ...calendar.extraNextDays
+  const calendarDates = [
+    ...calendar.extraPreviousDates,
+    ...calendar.dates,
+    ...calendar.extraNextDates
   ];
-  console.log(calendarDays);
+  console.log(calendarDates);
   
-  const contents = calendarDays.map(date =>
+  const contents = calendarDates.map(date =>
     <CalenderElemntSlot>
       <CalenderContent date={date} />
     </CalenderElemntSlot>
