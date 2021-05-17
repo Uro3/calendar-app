@@ -1,7 +1,8 @@
 import React from 'react';
 import { CalendarState } from '../types';
 import { useAppSelector } from '../hooks';
-import CalenderItem from './CalenderItem';
+import CalenderElemntSlot from './CalenderElementSlot';
+import CalenderContent from './CalenderContent';
 
 const Calendar: React.FC = () => {
   const calendar: CalendarState = useAppSelector<CalendarState>(state => state.calendar);
@@ -13,12 +14,14 @@ const Calendar: React.FC = () => {
   ];
   console.log(calendarDays);
   
-  const list = calendarDays.map(date => 
-    <CalenderItem date={date}></CalenderItem>
+  const list = calendarDays.map(date =>
+    <CalenderElemntSlot>
+      <CalenderContent date={date}/>
+    </CalenderElemntSlot>
   );
 
   return (
-    <div className="columns">
+    <div className="columns is-multiline is-gapless is-mobile">
       {list}
     </div>
   );
