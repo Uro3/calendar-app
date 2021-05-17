@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './CalenderElementSlot.module.css';
+import style from './Calender.module.css';
 
 const CalendarElemntSlot: React.FC = props => {
   return (
