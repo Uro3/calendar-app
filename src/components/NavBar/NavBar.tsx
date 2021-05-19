@@ -1,15 +1,56 @@
 import React from 'react';
 import { CalendarState } from '../../types';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { update } from '../../modules/calendar';
 import style from './NavBar.module.scss';
 
 const NavBar: React.FC = () => {
   const calendar: CalendarState = useAppSelector<CalendarState>(state => state.calendar);
+  const dispatch = useAppDispatch();
+
+  const jumpToPrevious = () => {
+    dispatch(update(calendar.year, calendar.month - 1));
+  };
+
+  const jumpToNext = () => {
+    dispatch(update(calendar.year, calendar.month + 1));
+  };
 
   return (
     <nav className={`navbar ${style.container}`}>
-      {calendar.year}年
-      {calendar.month}月
+      <div className="navbar-brand">
+        <div className="navbar-item">
+          <span className="is-size-5">
+            カレンダー
+          </span>
+        </div>
+        <div className="navbar-item">
+            <button className="button is-dark is-inverted is-small is-rounded">
+              <span className="icon" onClick={jumpToPrevious}>
+                <i className="fas fa-chevron-left"></i>
+              </span>
+            </button>
+            <button className="button is-dark is-inverted is-small is-rounded">
+              <span className="icon" onClick={jumpToNext}>
+                <i className="fas fa-chevron-right"></i>
+              </span>
+            </button>
+          </div>
+          <div className="navbar-item">
+            <span className="is-size-5">
+              {calendar.year}年 {calendar.month}月
+            </span>
+          </div>
+      </div>
+      <div className="navbar-menu">
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <span className="icon is-medium">
+              <i className="fas fa-lg fa-user"></i>
+            </span>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }
