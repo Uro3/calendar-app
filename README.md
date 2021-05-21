@@ -1,4 +1,4 @@
-# calender-app
+# calendar-app
 
 ## start development
 

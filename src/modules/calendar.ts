@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 import { CalendarState } from '../types';
-import { createCalenderState } from '../lib/calender';
+import { createCalendarState } from '../lib/calendar';
 
 // Types
 export const actionTypes = {
@@ -36,7 +36,7 @@ export const update = (year: number, month: number): UpdateAction => ({
 });
 
 // Reducers
-const initialState: CalendarState = createCalenderState(new Date());
+const initialState: CalendarState = createCalendarState(new Date());
 
 export const calendarReducer = (state: CalendarState = initialState, action: CalendarActions): CalendarState => {
   switch (action.type) {
@@ -46,7 +46,7 @@ export const calendarReducer = (state: CalendarState = initialState, action: Cal
     case actionTypes.UPDATE: {
       const { year, month } = action.payload;
       const newDate = new Date(year, month - 1);
-      return createCalenderState(newDate);
+      return createCalendarState(newDate);
     }
     default: {
       return state;

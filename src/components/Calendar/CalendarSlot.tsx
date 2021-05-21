@@ -1,14 +1,14 @@
 import React from 'react';
 import { DISPLAY_DAYS } from '../../constants';
-import style from './Calender.module.scss';
-import CalenderElemntSlot from './CalenderElementSlot';
-import CalenderHeader from './CalenderHeader';
+import style from './Calendar.module.scss';
+import CalendarElemntSlot from './CalendarElementSlot';
+import CalendarHeader from './CalendarHeader';
 
 const CalendarSlot: React.FC = props => {
   const headers = DISPLAY_DAYS.map(day =>
-    <CalenderElemntSlot>
-      <CalenderHeader value={day} />
-    </CalenderElemntSlot>
+    <CalendarElemntSlot>
+      <CalendarHeader value={day} />
+    </CalendarElemntSlot>
   );
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { CalendarContent as CalendarContentType } from '../../types';
-import style from './Calender.module.scss';
+import style from './Calendar.module.scss';
 
 type Props = {
   content: CalendarContentType;

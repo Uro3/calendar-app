@@ -2,8 +2,8 @@ import React from 'react';
 import { CalendarState } from '../types';
 import { useAppSelector } from '../hooks';
 import CalendarSlot from '../components/Calendar/CalendarSlot';
-import CalenderElemntSlot from '../components/Calendar/CalenderElementSlot';
-import CalenderContent from '../components/Calendar/CalenderContent';
+import CalendarElemntSlot from '../components/Calendar/CalendarElementSlot';
+import CalendarContent from '../components/Calendar/CalendarContent';
 
 const Calendar: React.FC = () => {
   const calendar: CalendarState = useAppSelector<CalendarState>(state => state.calendar);
@@ -15,9 +15,9 @@ const Calendar: React.FC = () => {
     const isCurrentMonth: boolean = content.month === calendar.month;
     const isToday: boolean = isYearMonthOfToday && content.date === today.getDate();
     return (
-      <CalenderElemntSlot>
-        <CalenderContent content={content} isCurrentMonth={isCurrentMonth} isToday={isToday} />
-      </CalenderElemntSlot>
+      <CalendarElemntSlot>
+        <CalendarContent content={content} isCurrentMonth={isCurrentMonth} isToday={isToday} />
+      </CalendarElemntSlot>
     );
   });
 

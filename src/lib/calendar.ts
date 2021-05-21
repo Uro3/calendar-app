@@ -1,6 +1,6 @@
 import { CalendarContent, CalendarState } from '../types';
 
-export const createCalenderState = (date: Date): CalendarState => {
+export const createCalendarState = (date: Date): CalendarState => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const dates = getDatesInMonth(year, month);
