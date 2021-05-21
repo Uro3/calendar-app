@@ -25,12 +25,12 @@ const NavBar: React.FC = () => {
           </span>
         </div>
         <div className="navbar-item">
-            <button className="button is-dark is-inverted is-small is-rounded">
+            <button className="button is-white is-small is-rounded">
               <span className="icon" onClick={jumpToPrevious}>
                 <i className="fas fa-chevron-left"></i>
               </span>
             </button>
-            <button className="button is-dark is-inverted is-small is-rounded">
+            <button className="button is-white is-small is-rounded">
               <span className="icon" onClick={jumpToNext}>
                 <i className="fas fa-chevron-right"></i>
               </span>
