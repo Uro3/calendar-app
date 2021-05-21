@@ -11,7 +11,7 @@ const Calendar: React.FC = () => {
   const calendar: CalendarState = useAppSelector<CalendarState>(state => state.calendar);
 
   const today: Date = new Date();
-  const isCuurentYear: boolean = calendar.year === today.getFullYear();
+  const isYearMonthOfToday: boolean = calendar.year === today.getFullYear() && calendar.month === (today.getMonth() + 1);
 
   const headers = DISPLAY_DAYS.map(day =>
     <CalenderElemntSlot>
@@ -21,7 +21,7 @@ const Calendar: React.FC = () => {
   
   const contents = calendar.contents.map(content => {
     const isCurrentMonth: boolean = content.month === calendar.month;
-    const isToday: boolean = isCuurentYear && isCurrentMonth && content.date === today.getDate();
+    const isToday: boolean = isYearMonthOfToday && content.date === today.getDate();
     return (
       <CalenderElemntSlot>
         <CalenderContent content={content} isCurrentMonth={isCurrentMonth} isToday={isToday} />
