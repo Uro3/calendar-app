@@ -21,9 +21,9 @@ const ScheduleDialog: React.FC = () => {
       isActiveClass = 'is-active';
       content = <ScheduleDialogAdd
         close={closeDialog}
-        year={scheduleDialog.year}
-        month={scheduleDialog.month}
-        date={scheduleDialog.date}
+        year={scheduleDialog.year || 0}
+        month={scheduleDialog.month || 0}
+        date={scheduleDialog.date || 0}
       />;
       break;
 
