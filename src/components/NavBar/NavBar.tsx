@@ -34,22 +34,22 @@ const NavBar: React.FC = () => {
           </button>
         </div>
         <div className="navbar-item">
-            <button className="button is-white is-small is-rounded">
-              <span className="icon" onClick={jumpToPrevious}>
-                <i className="fas fa-chevron-left"></i>
-              </span>
-            </button>
-            <button className="button is-white is-small is-rounded">
-              <span className="icon" onClick={jumpToNext}>
-                <i className="fas fa-chevron-right"></i>
-              </span>
-            </button>
-          </div>
-          <div className="navbar-item">
-            <span className="is-size-5">
-              {calendar.year}年 {calendar.month}月
+          <button className="button is-white is-small is-rounded" onClick={jumpToPrevious}>
+            <span className="icon">
+              <i className="fas fa-chevron-left"></i>
             </span>
-          </div>
+          </button>
+          <button className="button is-white is-small is-rounded" onClick={jumpToNext}>
+            <span className="icon">
+              <i className="fas fa-chevron-right"></i>
+            </span>
+          </button>
+        </div>
+        <div className="navbar-item">
+          <span className="is-size-5">
+            {calendar.year}年 {calendar.month}月
+          </span>
+        </div>
       </div>
       <div className="navbar-menu">
         <div className="navbar-end">
