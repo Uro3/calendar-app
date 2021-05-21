@@ -1,11 +1,9 @@
 import React from 'react';
-import { CalendarState } from '../../types';
-import { useAppSelector } from '../../hooks';
-import { DISPLAY_DAYS } from '../../constants';
-import style from './Calender.module.scss';
-import CalenderElemntSlot from './CalenderElementSlot';
-import CalenderHeader from './CalenderHeader';
-import CalenderContent from './CalenderContent';
+import { CalendarState } from '../types';
+import { useAppSelector } from '../hooks';
+import CalendarSlot from '../components/Calendar/CalendarSlot';
+import CalenderElemntSlot from '../components/Calendar/CalenderElementSlot';
+import CalenderContent from '../components/Calendar/CalenderContent';
 
 const Calendar: React.FC = () => {
   const calendar: CalendarState = useAppSelector<CalendarState>(state => state.calendar);
@@ -13,12 +11,6 @@ const Calendar: React.FC = () => {
   const today: Date = new Date();
   const isYearMonthOfToday: boolean = calendar.year === today.getFullYear() && calendar.month === (today.getMonth() + 1);
 
-  const headers = DISPLAY_DAYS.map(day =>
-    <CalenderElemntSlot>
-      <CalenderHeader value={day} />
-    </CalenderElemntSlot>
-  );
-  
   const contents = calendar.contents.map(content => {
     const isCurrentMonth: boolean = content.month === calendar.month;
     const isToday: boolean = isYearMonthOfToday && content.date === today.getDate();
@@ -30,10 +22,9 @@ const Calendar: React.FC = () => {
   });
 
   return (
-    <div className={`columns is-multiline is-gapless is-mobile ${style.container}`}>
-      {headers}
+    <CalendarSlot>
       {contents}
-    </div>
+    </CalendarSlot>
   );
 }
 
