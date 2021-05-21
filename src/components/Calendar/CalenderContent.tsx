@@ -5,19 +5,27 @@ import style from './Calender.module.scss';
 type Props = {
   content: CalendarContentType;
   isCurrentMonth: boolean;
+  isToday: boolean;
 };
 
 const CalendarContent: React.FC<Props> = props => {
-  const dateTextColorClass = props.isCurrentMonth ? 'has-text-black' : 'has-text-grey';
+  let dateTextColorClass = 'has-text-grey';
+  if (props.isCurrentMonth) {
+    dateTextColorClass = props.isToday ? 'has-text-white' : 'has-text-black';
+  }
+  const dateTextBackgroudColorClass = props.isToday ? 'is-info' : 'is-white';
+
   const { date, month } = props.content;
   const displayDate = date === 1 ? `${month}月 ${date}日` : date ;
 
   return (
     <>
-      <div className={style.caption}>
-        <span className={dateTextColorClass}>
-          {displayDate}
-        </span>
+      <div className="has-text-centered is-size-7">
+        <button className={`button is-small is-rounded ${dateTextBackgroudColorClass}`}>
+          <span className={dateTextColorClass}>
+            {displayDate}
+          </span>
+        </button>
       </div>
       <div className={style.content}></div>
     </>

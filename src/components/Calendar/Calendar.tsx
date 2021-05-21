@@ -10,17 +10,24 @@ import CalenderContent from './CalenderContent';
 const Calendar: React.FC = () => {
   const calendar: CalendarState = useAppSelector<CalendarState>(state => state.calendar);
 
+  const today: Date = new Date();
+  const isCuurentYear: boolean = calendar.year === today.getFullYear();
+
   const headers = DISPLAY_DAYS.map(day =>
     <CalenderElemntSlot>
       <CalenderHeader value={day} />
     </CalenderElemntSlot>
   );
   
-  const contents = calendar.contents.map(content =>
-    <CalenderElemntSlot>
-      <CalenderContent content={content} isCurrentMonth={content.month === calendar.month} />
-    </CalenderElemntSlot>
-  );
+  const contents = calendar.contents.map(content => {
+    const isCurrentMonth: boolean = content.month === calendar.month;
+    const isToday: boolean = isCuurentYear && isCurrentMonth && content.date === today.getDate();
+    return (
+      <CalenderElemntSlot>
+        <CalenderContent content={content} isCurrentMonth={isCurrentMonth} isToday={isToday} />
+      </CalenderElemntSlot>
+    );
+  });
 
   return (
     <div className={`columns is-multiline is-gapless is-mobile ${style.container}`}>
