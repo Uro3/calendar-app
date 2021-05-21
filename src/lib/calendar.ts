@@ -8,9 +8,9 @@ export const createCalendarState = (date: Date): CalendarState => {
   const extraNextDates = getCalendarNextMonthDates(year, month);
 
   const contents = [
-    ...createCalendarContent(extraPreviousDates, month - 1),
-    ...createCalendarContent(dates, month),
-    ...createCalendarContent(extraNextDates, month + 1)
+    ...createCalendarContent(extraPreviousDates, month - 1, year),
+    ...createCalendarContent(dates, month, year),
+    ...createCalendarContent(extraNextDates, month + 1, year)
   ];
 
   return {
@@ -20,11 +20,12 @@ export const createCalendarState = (date: Date): CalendarState => {
   };
 };
 
-const createCalendarContent = (dates: number[], month: number): CalendarContent[] => {
+const createCalendarContent = (dates: number[], month: number, year: number): CalendarContent[] => {
   return dates.map(date => {
     return {
       date,
-      month
+      month,
+      year
     };
   });
 };

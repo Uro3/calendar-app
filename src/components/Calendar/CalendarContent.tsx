@@ -19,12 +19,13 @@ const CalendarContent: React.FC<Props> = props => {
   }
   const dateTextBackgroudColorClass = props.isToday ? 'is-info' : 'is-white';
 
-  const { date, month } = props.content;
+  const { date, month, year } = props.content;
   const displayDate = date === 1 ? `${month}月 ${date}日` : date ;
 
   const openDialog = () => {    
     const params: ScheduleDialogState = {
       activeDialog: 'ADD',
+      year,
       month,
       date
     };

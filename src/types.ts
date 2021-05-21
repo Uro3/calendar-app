@@ -1,4 +1,5 @@
 export type CalendarContent = {
+  year: number;
   month: number;
   date: number;
 };
