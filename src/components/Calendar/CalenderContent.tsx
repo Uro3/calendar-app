@@ -20,8 +20,8 @@ const CalendarContent: React.FC<Props> = props => {
 
   return (
     <>
-      <div className="has-text-centered is-size-7">
-        <button className={`button is-small is-rounded ${dateTextBackgroudColorClass}`}>
+      <div className="has-text-centered is-size-7 py-1">
+        <button className={`button is-small is-rounded ${dateTextBackgroudColorClass} ${style.date_text_field}`}>
           <span className={dateTextColorClass}>
             {displayDate}
           </span>
