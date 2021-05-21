@@ -21,3 +21,12 @@ export type Schedule = {
 export type ScheduleState = {
   [key: string]: Schedule[]
 } | null;
+
+export type ScheduleDialogType = 'ADD' | 'UPDATE' | 'REMOVE' | 'NONE';
+
+export type ScheduleDialogState = {
+  activeDialog: ScheduleDialogType;
+  year?: number;
+  month?: number;
+  date?: number;
+};

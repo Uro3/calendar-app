@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from 'redux';
 import { calendarReducer } from './modules/calendar';
 import { scheduleReducer } from './modules/schedule';
+import { scheduleDialogReducer } from './modules/scheduleDialog';
 
 const rootReducer = combineReducers({
   calendar: calendarReducer,
-  schedule: scheduleReducer
+  schedule: scheduleReducer,
+  scheduleDialog: scheduleDialogReducer
 });
 
 const store = createStore(rootReducer);

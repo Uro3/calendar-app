@@ -4,6 +4,7 @@ import { useAppSelector } from '../hooks';
 import CalendarSlot from '../components/Calendar/CalendarSlot';
 import CalendarElemntSlot from '../components/Calendar/CalendarElementSlot';
 import CalendarContent from '../components/Calendar/CalendarContent';
+import ScheduleDialog from '../components/ScheduleDialog/ScheduleDialog';
 
 const Calendar: React.FC = () => {
   const calendar: CalendarState = useAppSelector<CalendarState>(state => state.calendar);
@@ -22,9 +23,12 @@ const Calendar: React.FC = () => {
   });
 
   return (
-    <CalendarSlot>
-      {contents}
-    </CalendarSlot>
+    <>
+      <CalendarSlot>
+        {contents}
+      </CalendarSlot>
+      <ScheduleDialog />
+    </>
   );
 }
 
