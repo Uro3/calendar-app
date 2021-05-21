@@ -16,7 +16,7 @@ const Calendar: React.FC = () => {
     const isCurrentMonth: boolean = content.month === calendar.month;
     const isToday: boolean = isYearMonthOfToday && content.date === today.getDate();
     return (
-      <CalendarElemntSlot>
+      <CalendarElemntSlot key={`${content.month}-${content.date}`}>
         <CalendarContent content={content} isCurrentMonth={isCurrentMonth} isToday={isToday} />
       </CalendarElemntSlot>
     );

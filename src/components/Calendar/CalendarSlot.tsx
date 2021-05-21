@@ -6,7 +6,7 @@ import CalendarHeader from './CalendarHeader';
 
 const CalendarSlot: React.FC = props => {
   const headers = DISPLAY_DAYS.map(day =>
-    <CalendarElemntSlot>
+    <CalendarElemntSlot key={day}>
       <CalendarHeader value={day} />
     </CalendarElemntSlot>
   );
