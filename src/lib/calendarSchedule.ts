@@ -1,6 +1,6 @@
-import { Schedule, ScheduleState } from '../types';
+import { Schedule, CalendarScheduleState } from '../types';
 
-export const addSchedule = (state: ScheduleState, schedule: Schedule): ScheduleState => {
+export const addCalendarSchedule = (state: CalendarScheduleState, schedule: Schedule): CalendarScheduleState => {
   const { dateKey } = schedule;
   let newSchedules = [schedule];
   if (state) {
@@ -18,7 +18,7 @@ export const addSchedule = (state: ScheduleState, schedule: Schedule): ScheduleS
   };
 };
 
-export const removeSchedule = (state: ScheduleState, schedule: Schedule): ScheduleState => {
+export const removeCalendarSchedule = (state: CalendarScheduleState, schedule: Schedule): CalendarScheduleState => {
   const { dateKey } = schedule;
   if (!state) {
     return state;
@@ -31,7 +31,7 @@ export const removeSchedule = (state: ScheduleState, schedule: Schedule): Schedu
   };
 };
 
-export const updateSchedule = (state: ScheduleState, schedule: Schedule): ScheduleState => {
+export const updateCalendarSchedule = (state: CalendarScheduleState, schedule: Schedule): CalendarScheduleState => {
   const { dateKey } = schedule;
   if (!state) {
     return state;

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { Schedule } from '../../types';
-import { add } from '../../modules/schedule';
-import { createDateKey } from '../../lib/schedule';
+import { add } from '../../modules/calendarSchedule';
+import { createDateKey } from '../../lib/calendarSchedule';
 
 type Props = {
   close: () => void;
