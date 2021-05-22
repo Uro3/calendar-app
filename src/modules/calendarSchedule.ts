@@ -10,7 +10,7 @@ export const actionTypes = {
 export interface AddAction extends Action {
   type: typeof actionTypes.ADD;
   payload: {
-    calendarKey: string;
+    calendarDate: string;
     scheduleId: string;
   };
 }
@@ -18,7 +18,7 @@ export interface AddAction extends Action {
 export interface RemoveAction extends Action {
   type: typeof actionTypes.REMOVE;
   payload: {
-    calendarKey: string;
+    calendarDate: string;
     scheduleId: string;
   };
 }
@@ -26,18 +26,18 @@ export interface RemoveAction extends Action {
 export type CalendarScheduleActions = AddAction | RemoveAction;
 
 // Action Creators
-export const add = (calendarKey: string, scheduleId: string): AddAction => ({
+export const add = (calendarDate: string, scheduleId: string): AddAction => ({
   type: actionTypes.ADD,
   payload: {
-    calendarKey,
+    calendarDate,
     scheduleId
   }
 });
 
-export const remove = (calendarKey: string, scheduleId: string): RemoveAction => ({
+export const remove = (calendarDate: string, scheduleId: string): RemoveAction => ({
   type: actionTypes.REMOVE,
   payload: {
-    calendarKey,
+    calendarDate,
     scheduleId
   }
 });
@@ -46,22 +46,22 @@ export const remove = (calendarKey: string, scheduleId: string): RemoveAction =>
 export const calendarScheduleReducer = (state: CalendarScheduleState = {}, action: CalendarScheduleActions): CalendarScheduleState => {
   switch (action.type) {
     case actionTypes.ADD: {
-      const { calendarKey, scheduleId } = action.payload;
-      const oldScheduleIds = state[calendarKey] || [];
+      const { calendarDate, scheduleId } = action.payload;
+      const oldScheduleIds = state[calendarDate] || [];
       const newScheduleIds = [...oldScheduleIds, scheduleId];
       return {
         ...state,
-        [calendarKey]: newScheduleIds
+        [calendarDate]: newScheduleIds
       };
     }
 
     case actionTypes.REMOVE: {
-      const { calendarKey, scheduleId } = action.payload;
-      const oldScheduleIds = state[calendarKey] || [];
+      const { calendarDate, scheduleId } = action.payload;
+      const oldScheduleIds = state[calendarDate] || [];
       const newScheduleIds = oldScheduleIds.filter(id => id !== scheduleId);
       return {
         ...state,
-        [calendarKey]: newScheduleIds
+        [calendarDate]: newScheduleIds
       };
     }
     default: {

@@ -1,5 +1,5 @@
 export type CalendarContent = {
-  key: string;
+  calendarDate: string;
   year: number;
   month: number;
   date: number;
@@ -13,7 +13,7 @@ export type CalendarState = {
 
 export type Schedule = {
   id: string;
-  calendarKey: string;
+  calendarDate: string;
   title: string;
   comment: string;
   startTime: string;
@@ -25,8 +25,8 @@ export type ScheduleState = {
 };
 
 export type CalendarScheduleState = {
-  // calenderKey: scheduleIds[]
-  [calendarKey: string]: string[];
+  // calendarDate: scheduleIds[]
+  [calendarDate: string]: string[];
 };
 
 export type ScheduleDialogType = 'ADD' | 'SHOW' | 'EDIT' | 'NONE';

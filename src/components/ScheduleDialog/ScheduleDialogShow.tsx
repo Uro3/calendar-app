@@ -27,7 +27,7 @@ const ScheduleDialogShow: React.FC<Props> = props => {
   };
 
   const submitRemove = () => {
-    dispatch(removeCalendarSchedule(schedule.calendarKey, schedule.id));
+    dispatch(removeCalendarSchedule(schedule.calendarDate, schedule.id));
     dispatch(removeSchedule(schedule.id));
     props.close();
   };

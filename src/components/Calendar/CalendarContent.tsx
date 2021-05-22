@@ -12,7 +12,7 @@ type Props = {
 };
 
 const CalendarContent: React.FC<Props> = props => {
-  const scheduleIds: string[] = useAppSelector<string[]>(state => state.calendarSchedule[props.content.key]) || [];
+  const scheduleIds: string[] = useAppSelector<string[]>(state => state.calendarSchedule[props.content.calendarDate]) || [];
   const dispatch = useAppDispatch();
 
   let dateTextColorClass = 'has-text-grey';

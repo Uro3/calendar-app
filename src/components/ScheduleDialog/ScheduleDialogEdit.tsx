@@ -45,7 +45,7 @@ const ScheduleDialogEdit: React.FC<Props> = props => {
   const submit = () => {
     const params: Schedule = {
       id: schedule.id,
-      calendarKey: schedule.calendarKey,
+      calendarDate: schedule.calendarDate,
       title,
       comment,
       startTime,

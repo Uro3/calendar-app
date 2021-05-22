@@ -3,7 +3,7 @@ import { useAppDispatch } from '../../hooks';
 import { Schedule } from '../../types';
 import { add as addCalendarSchedule } from '../../modules/calendarSchedule';
 import { add as addSchedule } from '../../modules/schedule';
-import { createCalendarKey } from '../../lib/calendar';
+import { getCalendarDate } from '../../lib/calendar';
 import { createScheduleId } from '../../lib/schedule';
 
 type Props = {
@@ -44,18 +44,18 @@ const ScheduleDialogAdd: React.FC<Props> = props => {
   };
 
   const submit = () => {
-    const calendarKey = createCalendarKey(props.year, props.month, props.date);
+    const calendarDate = getCalendarDate(props.year, props.month, props.date);
     const id = createScheduleId();
     const params: Schedule = {
       id,
-      calendarKey,
+      calendarDate,
       title,
       comment,
       startTime,
       endTime
     };
     dispatch(addSchedule(params));
-    dispatch(addCalendarSchedule(calendarKey, id));
+    dispatch(addCalendarSchedule(calendarDate, id));
     props.close();
   };
 
