@@ -55,7 +55,7 @@ export const remove = (schedule: Schedule): RemoveAction => ({
 });
 
 // Reducers
-export const calendarScheduleReducer = (state: CalendarScheduleState = null, action: CalendarScheduleActions): CalendarScheduleState => {
+export const calendarScheduleReducer = (state: CalendarScheduleState = {}, action: CalendarScheduleActions): CalendarScheduleState => {
   switch (action.type) {
     case actionTypes.ADD: {
       const { schedule } = action.payload;

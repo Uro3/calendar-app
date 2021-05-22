@@ -25,7 +25,7 @@ export type ScheduleState = {
 
 export type CalendarScheduleState = {
   [key: string]: Schedule[]
-} | null;
+};
 
 export type ScheduleDialogType = 'ADD' | 'UPDATE' | 'REMOVE' | 'NONE';
 
