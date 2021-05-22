@@ -1,6 +1,12 @@
 import { CalendarContent, CalendarState } from '../types';
 
-export const createCalenderState = (date: Date): CalendarState => {
+export const getCalendarDate = (year: number, month: number, date: number): string => {
+  const paddedMonth: string = month.toString().padStart(2, '0');
+  const paddedDate: string = date.toString().padStart(2, '0');
+  return `${year}-${paddedMonth}-${paddedDate}`;
+};
+
+export const createCalendarState = (date: Date): CalendarState => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
   const dates = getDatesInMonth(year, month);
@@ -8,9 +14,9 @@ export const createCalenderState = (date: Date): CalendarState => {
   const extraNextDates = getCalendarNextMonthDates(year, month);
 
   const contents = [
-    ...createCalendarContent(extraPreviousDates, month - 1),
-    ...createCalendarContent(dates, month),
-    ...createCalendarContent(extraNextDates, month + 1)
+    ...createCalendarContent(extraPreviousDates, month - 1, year),
+    ...createCalendarContent(dates, month, year),
+    ...createCalendarContent(extraNextDates, month + 1, year)
   ];
 
   return {
@@ -20,11 +26,13 @@ export const createCalenderState = (date: Date): CalendarState => {
   };
 };
 
-const createCalendarContent = (dates: number[], month: number): CalendarContent[] => {
+const createCalendarContent = (dates: number[], month: number, year: number): CalendarContent[] => {
   return dates.map(date => {
     return {
+      calendarDate: getCalendarDate(year, month, date),
       date,
-      month
+      month,
+      year
     };
   });
 };

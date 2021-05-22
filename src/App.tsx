@@ -1,6 +1,6 @@
 import React from 'react';
-import Calendar from './components/Calendar/Calendar';
 import NavBar from './components/NavBar/NavBar';
+import Calendar from './pages/Calendar';
 
 const App: React.FC = () => {
   return (

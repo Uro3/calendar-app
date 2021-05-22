@@ -10,13 +10,12 @@
   border-right: 1px solid $grey-light;
 }
 
-.caption {
-  padding: 3px 0;
-  height: 24px;
-  text-align: center;
-  font-size: 13px;
+.date_text_field {
+  height: 1.5em !important;
+  padding: 1em 0.5em !important;
 }
 
 .content {
-  height: 72px
+  height: 80px;
+  overflow-y: auto;
 }
