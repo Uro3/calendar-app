@@ -1,6 +1,7 @@
 import { createStore, combineReducers, compose } from 'redux';
 import { calendarReducer } from './modules/calendar';
 import { calendarScheduleReducer } from './modules/calendarSchedule';
+import { scheduleReducer } from './modules/schedule';
 import { scheduleDialogReducer } from './modules/scheduleDialog';
 
 // https://qiita.com/AshSuzuki/items/111d5a7c5d30fd1123c3
@@ -14,6 +15,7 @@ const composeReduxDevToolsEnhancers = typeof window === 'object' && window.__RED
 const rootReducer = combineReducers({
   calendar: calendarReducer,
   calendarSchedule: calendarScheduleReducer,
+  schedule: scheduleReducer,
   scheduleDialog: scheduleDialogReducer
 });
 

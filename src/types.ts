@@ -19,6 +19,10 @@ export type Schedule = {
   endTime: string;
 };
 
+export type ScheduleState = {
+  [id: string]: Schedule
+};
+
 export type CalendarScheduleState = {
   [key: string]: Schedule[]
 } | null;
