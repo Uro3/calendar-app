@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 import { CalendarState } from '../types';
-import { createCalendarState } from '../lib/calendar';
+import { createCalendarState } from '../services/calendar';
 
 // Types
 export const actionTypes = {

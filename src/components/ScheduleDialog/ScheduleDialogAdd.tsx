@@ -3,8 +3,8 @@ import { useAppDispatch } from '../../hooks';
 import { Schedule } from '../../types';
 import { add as addCalendarSchedule } from '../../modules/calendarSchedule';
 import { add as addSchedule } from '../../modules/schedule';
-import { getCalendarDate } from '../../lib/calendar';
-import { createScheduleId } from '../../lib/schedule';
+import { getCalendarDate } from '../../services/calendar';
+import { createScheduleId } from '../../services/schedule';
 
 type Props = {
   close: () => void;
