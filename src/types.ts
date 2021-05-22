@@ -29,10 +29,11 @@ export type CalendarScheduleState = {
   [calendarKey: string]: string[];
 };
 
-export type ScheduleDialogType = 'ADD' | 'UPDATE' | 'REMOVE' | 'NONE';
+export type ScheduleDialogType = 'ADD' | 'SHOW' | 'EDIT' | 'NONE';
 
 export type ScheduleDialogState = {
   activeDialog: ScheduleDialogType;
+  scheduleId?: string;
   year?: number;
   month?: number;
   date?: number;
