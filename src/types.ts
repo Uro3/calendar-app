@@ -21,11 +21,12 @@ export type Schedule = {
 };
 
 export type ScheduleState = {
-  [id: string]: Schedule
+  [id: string]: Schedule;
 };
 
 export type CalendarScheduleState = {
-  [calendarKey: string]: Schedule[]
+  // calenderKey: scheduleIds[]
+  [calendarKey: string]: string[];
 };
 
 export type ScheduleDialogType = 'ADD' | 'UPDATE' | 'REMOVE' | 'NONE';

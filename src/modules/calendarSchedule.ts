@@ -1,6 +1,5 @@
 import { Action } from 'redux';
-import { Schedule, CalendarScheduleState } from '../types';
-import { addCalendarSchedule, updateCalendarSchedule, removeCalendarSchedule } from '../lib/calendarSchedule';
+import { CalendarScheduleState } from '../types';
 
 // Types
 export const actionTypes = {
@@ -12,45 +11,35 @@ export const actionTypes = {
 export interface AddAction extends Action {
   type: typeof actionTypes.ADD;
   payload: {
-    schedule: Schedule
-  };
-}
-
-export interface UpdateAction extends Action {
-  type: typeof actionTypes.UPDATE;
-  payload: {
-    schedule: Schedule
+    calendarKey: string;
+    scheduleId: string;
   };
 }
 
 export interface RemoveAction extends Action {
   type: typeof actionTypes.REMOVE;
   payload: {
-    schedule: Schedule
+    calendarKey: string;
+    scheduleId: string;
   };
 }
 
-export type CalendarScheduleActions = AddAction | UpdateAction | RemoveAction;
+export type CalendarScheduleActions = AddAction | RemoveAction;
 
 // Action Creators
-export const add = (schedule: Schedule): AddAction => ({
+export const add = (calendarKey: string, scheduleId: string): AddAction => ({
   type: actionTypes.ADD,
   payload: {
-    schedule
+    calendarKey,
+    scheduleId
   }
 });
 
-export const update = (schedule: Schedule): UpdateAction => ({
-  type: actionTypes.UPDATE,
-  payload: {
-    schedule
-  }
-});
-
-export const remove = (schedule: Schedule): RemoveAction => ({
+export const remove = (calendarKey: string, scheduleId: string): RemoveAction => ({
   type: actionTypes.REMOVE,
   payload: {
-    schedule
+    calendarKey,
+    scheduleId
   }
 });
 
@@ -58,21 +47,23 @@ export const remove = (schedule: Schedule): RemoveAction => ({
 export const calendarScheduleReducer = (state: CalendarScheduleState = {}, action: CalendarScheduleActions): CalendarScheduleState => {
   switch (action.type) {
     case actionTypes.ADD: {
-      const { schedule } = action.payload;
-      const newState = addCalendarSchedule(state, schedule);
-      return newState;
-    }
-
-    case actionTypes.UPDATE: {
-      const { schedule } = action.payload;
-      const newState = updateCalendarSchedule(state, schedule);
-      return newState;
+      const { calendarKey, scheduleId } = action.payload;
+      const oldScheduleIds = state[calendarKey] || [];
+      const newScheduleIds = [...oldScheduleIds, scheduleId];
+      return {
+        ...state,
+        [calendarKey]: newScheduleIds
+      };
     }
 
     case actionTypes.REMOVE: {
-      const { schedule } = action.payload;
-      const newState = removeCalendarSchedule(state, schedule);
-      return newState;
+      const { calendarKey, scheduleId } = action.payload;
+      const oldScheduleIds = state[calendarKey] || [];
+      const newScheduleIds = oldScheduleIds.filter(id => id !== scheduleId);
+      return {
+        ...state,
+        [calendarKey]: newScheduleIds
+      };
     }
     default: {
       return state;

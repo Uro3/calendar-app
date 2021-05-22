@@ -1,14 +1,6 @@
 import { Action } from 'redux';
 import { Schedule, ScheduleState } from '../types';
 
-type ScheduleAddParams = {
-  calendarKey: string;
-  title: string;
-  comment: string;
-  startTime: string;
-  endTime: string;
-};
-
 // Types
 export const actionTypes = {
   ADD: 'schedule/ADD',
@@ -19,7 +11,7 @@ export const actionTypes = {
 export interface AddAction extends Action {
   type: typeof actionTypes.ADD;
   payload: {
-    params: ScheduleAddParams
+    schedule: Schedule
   };
 }
 
@@ -40,10 +32,10 @@ export interface RemoveAction extends Action {
 export type ScheduleActions = AddAction | UpdateAction | RemoveAction;
 
 // Action Creators
-export const add = (params: ScheduleAddParams): AddAction => ({
+export const add = (schedule: Schedule): AddAction => ({
   type: actionTypes.ADD,
   payload: {
-    params
+    schedule
   }
 });
 
@@ -65,15 +57,10 @@ export const remove = (id: string): RemoveAction => ({
 export const scheduleReducer = (state: ScheduleState = {}, action: ScheduleActions): ScheduleState => {
   switch (action.type) {
     case actionTypes.ADD: {
-      const { params } = action.payload;
-      const id: string = `${Math.random()}`;
-      const newSchedule: Schedule = {
-        id,
-        ...params
-      };
+      const { schedule } = action.payload;
       return {
         ...state,
-        [id]: newSchedule
+        [schedule.id]: schedule
       };
     }
 
