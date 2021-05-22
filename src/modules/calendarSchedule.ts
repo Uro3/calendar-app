@@ -4,7 +4,6 @@ import { CalendarScheduleState } from '../types';
 // Types
 export const actionTypes = {
   ADD: 'calendarSchedule/ADD',
-  UPDATE: 'calendarSchedule/UPDATE',
   REMOVE: 'calendarSchedule/REMOVE'
 } as const
 
