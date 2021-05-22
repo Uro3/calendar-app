@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../hooks';
 import { Schedule } from '../../types';
 import { update } from '../../modules/schedule';
+import { add as addCalendarSchedule, remove as removeCalendarSchedule } from '../../modules/calendarSchedule';
 
 type Props = {
   close: () => void;
@@ -47,13 +48,19 @@ const ScheduleDialogEdit: React.FC<Props> = props => {
   const submit = () => {
     const params: Schedule = {
       id: schedule.id,
-      calendarDate: schedule.calendarDate,
+      calendarDate,
       title,
       comment,
       startTime,
       endTime
     };
     dispatch(update(params));
+
+    if (calendarDate !== schedule.calendarDate) {
+      dispatch(removeCalendarSchedule(schedule.calendarDate, schedule.id));
+      dispatch(addCalendarSchedule(calendarDate, schedule.id));
+    }
+
     props.close();
   };
 
