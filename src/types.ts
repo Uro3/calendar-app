@@ -25,8 +25,7 @@ export type ScheduleState = {
 };
 
 export type CalendarScheduleState = {
-  // calendarDate: scheduleIds[]
-  [calendarDate: string]: string[];
+  [calendarDate: string]: string[]; // calendarDate: scheduleIds[]
 };
 
 export type ScheduleDialogType = 'ADD' | 'SHOW' | 'EDIT' | 'NONE';
