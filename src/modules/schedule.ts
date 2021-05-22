@@ -2,7 +2,7 @@ import { Action } from 'redux';
 import { Schedule, ScheduleState } from '../types';
 
 type ScheduleAddParams = {
-  dateKey: string;
+  calendarKey: string;
   title: string;
   comment: string;
   startTime: string;

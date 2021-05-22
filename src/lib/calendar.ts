@@ -1,5 +1,11 @@
 import { CalendarContent, CalendarState } from '../types';
 
+export const createCalendarKey = (year: number, month: number, date: number): string => {
+  const paddedMonth: string = month.toString().padStart(2, '0');
+  const paddedDate: string = date.toString().padStart(2, '0');
+  return `${year}-${paddedMonth}-${paddedDate}`;
+};
+
 export const createCalendarState = (date: Date): CalendarState => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -23,6 +29,7 @@ export const createCalendarState = (date: Date): CalendarState => {
 const createCalendarContent = (dates: number[], month: number, year: number): CalendarContent[] => {
   return dates.map(date => {
     return {
+      key: createCalendarKey(year, month, date),
       date,
       month,
       year

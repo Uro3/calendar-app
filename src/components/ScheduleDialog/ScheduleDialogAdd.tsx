@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { Schedule } from '../../types';
 import { add } from '../../modules/calendarSchedule';
-import { createDateKey } from '../../lib/calendarSchedule';
+import { createCalendarKey } from '../../lib/calendar';
 
 type Props = {
   close: () => void;
@@ -44,7 +44,7 @@ const ScheduleDialogAdd: React.FC<Props> = props => {
   const submit = () => {
     const params: Schedule = {
       id: `${Math.random()}`,
-      dateKey: createDateKey(props.year, props.month, props.date),
+      calendarKey: createCalendarKey(props.year, props.month, props.date),
       title: title,
       comment: comment,
       startTime: startTime,
