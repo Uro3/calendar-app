@@ -9,9 +9,6 @@ import style from './ScheduleDialog.module.scss';
 type Props = {
   close: () => void;
   scheduleId: string;
-  year: number;
-  month: number;
-  date: number;
 };
 
 const ScheduleDialogShow: React.FC<Props> = props => {
@@ -41,13 +38,16 @@ const ScheduleDialogShow: React.FC<Props> = props => {
         <button className="delete" aria-label="close" onClick={props.close}></button>
       </header>
       <section className="modal-card-body">
-        <p className="block">
-          {props.year}年 {props.month}月 {props.date}日
-        </p>
         <div className="field">
           <label className="label">タイトル</label>
           <div className="control">
             <input className="input has-text-dark" type="text" value={schedule.title} disabled />
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">日付</label>
+          <div className="control">
+            <input className="input has-text-dark" type="date" value={schedule.calendarDate} disabled />
           </div>
         </div>
         <div className="field">

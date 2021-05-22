@@ -16,13 +16,20 @@ type Props = {
 const ScheduleDialogAdd: React.FC<Props> = props => {
   const dispatch = useAppDispatch();
 
+  const initialCalendarDate = getCalendarDate(props.year, props.month, props.date);
+
   const [title, setTitle] =  useState('');
+  const [calendarDate, setCalendarDate] =  useState(initialCalendarDate);
   const [startTime, setStartTime] =  useState(`12:00`);
   const [endTime, setEndTime] =  useState(`13:00`);
   const [comment, setComment] =  useState('');
 
   const onTitleChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setTitle(event.target.value);
+  };
+
+  const onCalendarDateChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setCalendarDate(event.target.value);
   };
 
   const onStartTimeChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -44,7 +51,6 @@ const ScheduleDialogAdd: React.FC<Props> = props => {
   };
 
   const submit = () => {
-    const calendarDate = getCalendarDate(props.year, props.month, props.date);
     const id = createScheduleId();
     const params: Schedule = {
       id,
@@ -68,13 +74,16 @@ const ScheduleDialogAdd: React.FC<Props> = props => {
         <button className="delete" aria-label="close" onClick={props.close}></button>
       </header>
       <section className="modal-card-body">
-        <p className="block">
-          {props.year}年 {props.month}月 {props.date}日
-        </p>
         <div className="field">
           <label className="label">タイトル</label>
           <div className="control">
             <input className="input" type="text" value={title} onChange={onTitleChanged} />
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">日付</label>
+          <div className="control">
+            <input className="input" type="date" value={calendarDate} onChange={onCalendarDateChanged} />
           </div>
         </div>
         <div className="field">

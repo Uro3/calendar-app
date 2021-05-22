@@ -6,9 +6,6 @@ import { update } from '../../modules/schedule';
 type Props = {
   close: () => void;
   scheduleId: string;
-  year: number;
-  month: number;
-  date: number;
 };
 
 const ScheduleDialogEdit: React.FC<Props> = props => {
@@ -16,12 +13,17 @@ const ScheduleDialogEdit: React.FC<Props> = props => {
   const dispatch = useAppDispatch();
 
   const [title, setTitle] =  useState(schedule.title);
+  const [calendarDate, setCalendarDate] =  useState(schedule.calendarDate);
   const [startTime, setStartTime] =  useState(schedule.startTime);
   const [endTime, setEndTime] =  useState(schedule.endTime);
   const [comment, setComment] =  useState(schedule.comment);
 
   const onTitleChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setTitle(event.target.value);
+  };
+
+  const onCalendarDateChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setCalendarDate(event.target.value);
   };
 
   const onStartTimeChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -64,13 +66,16 @@ const ScheduleDialogEdit: React.FC<Props> = props => {
         <button className="delete" aria-label="close" onClick={props.close}></button>
       </header>
       <section className="modal-card-body">
-        <p className="block">
-          {props.year}年 {props.month}月 {props.date}日
-        </p>
         <div className="field">
           <label className="label">タイトル</label>
           <div className="control">
             <input className="input" type="text" value={title} onChange={onTitleChanged} />
+          </div>
+        </div>
+        <div className="field">
+          <label className="label">日付</label>
+          <div className="control">
+            <input className="input" type="date" value={calendarDate} onChange={onCalendarDateChanged} />
           </div>
         </div>
         <div className="field">

@@ -33,9 +33,6 @@ const ScheduleDialog: React.FC = () => {
           content = <ScheduleDialogShow
             close={closeDialog}
             scheduleId={scheduleDialog.scheduleId}
-            year={scheduleDialog.year || 0}
-            month={scheduleDialog.month || 0}
-            date={scheduleDialog.date || 0}
           />;
         }
         break;
@@ -46,9 +43,6 @@ const ScheduleDialog: React.FC = () => {
         content = <ScheduleDialogEdit
           close={closeDialog}
           scheduleId={scheduleDialog.scheduleId}
-          year={scheduleDialog.year || 0}
-          month={scheduleDialog.month || 0}
-          date={scheduleDialog.date || 0}
         />;
       }
       break;
